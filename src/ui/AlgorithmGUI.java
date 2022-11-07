@@ -48,35 +48,38 @@ public class AlgorithmGUI {
 	
 	@FXML
     public void newState(ActionEvent event) {
-		
-		TextField newState = new TextField();
-		TextField newContentState = new TextField();
-		
-		newState.setPrefHeight(state.getPrefHeight());
-		newState.setPrefWidth(state.getPrefWidth());
-		newState.setLayoutX(state.getLayoutX());
-		newState.setLayoutY(positionY + 40);
-		
-		newContentState.setPrefHeight(contentState.getPrefHeight());
-		newContentState.setPrefWidth(contentState.getPrefWidth());
-		newContentState.setLayoutX(contentState.getLayoutX());
-		newContentState.setLayoutY(positionY + 40);
-		
-		newState.setId(String.valueOf(cont));
-		newContentState.setId(String.valueOf(cont));
-		
-		cont++;
-		
-		statesArray.add(newState);
-		contentArray.add(newContentState);
-		
-		positionY += 40;
-		
-		if (positionY >= insertValues.getHeight()) {
-			insertValues.setPrefHeight(positionY + 40);
-		}
-		
-		insertValues.getChildren().add(newState);
+
+        TextField newState = new TextField();
+        TextField newContentState = new TextField();
+
+        newState.setPrefHeight(state.getPrefHeight());
+        newState.setPrefWidth(state.getPrefWidth());
+        newState.setLayoutX(state.getLayoutX());
+        newState.setLayoutY(positionY + 40);
+
+        newContentState.setPrefHeight(contentState.getPrefHeight());
+        newContentState.setPrefWidth(contentState.getPrefWidth());
+        newContentState.setLayoutX(contentState.getLayoutX());
+        newContentState.setLayoutY(positionY + 40);
+
+        newState.setId(String.valueOf(cont));
+        newContentState.setId(String.valueOf(cont));
+
+        cont++;
+
+        statesArray.add(newState);
+        contentArray.add(newContentState);
+
+        positionY += 40;
+
+        addState.setLayoutY(addState.getLayoutY() + 40);
+
+        if (addState.getLayoutY() >= insertValues.getHeight()) {
+            insertValues.setPrefHeight(positionY + 80);
+        }
+
+        insertValues.getChildren().add(newState);
+        insertValues.getChildren().add(newContentState);
     }
 
 	public void loadBanner() throws IOException {
@@ -107,10 +110,12 @@ public class AlgorithmGUI {
 		for (int i = 0; i < statesArray.size(); i++) {
 			algorithmCYK.addStates(statesArray.get(i).getText(), algorithmCYK.splitProductions(contentArray.get(i).getText()));
 		}
+		
+		calculateCYK();
 	}
 	
 	public void calculateCYK() throws IOException{
-		
+		algorithmCYK.calculateCYK();
 	}
 
 }
