@@ -31,10 +31,15 @@ public class AlgorithmGUI {
     
     @FXML
     private Button addState;
+    
+    @FXML
+    private TextField stringValue;
 	
     private double positionY = 0;
     
     private int cont = 1;
+    
+    
     
     private ArrayList<TextField> statesArray = new ArrayList<TextField>();
     private ArrayList<TextField> contentArray = new ArrayList<TextField>();
@@ -67,9 +72,6 @@ public class AlgorithmGUI {
 		statesArray.add(newState);
 		contentArray.add(newContentState);
 		
-		System.out.println(newState.getId());
-		System.out.println(newContentState.getId());
-		
 		positionY += 40;
 		
 		addState.setLayoutY(addState.getLayoutY() + 40);
@@ -97,8 +99,6 @@ public class AlgorithmGUI {
 		
 		statesArray.add(state);
 		contentArray.add(contentState);
-		System.out.println(state.getId());
-		System.out.println(contentState.getId());
 		
 		positionY = state.getLayoutY();
 	}

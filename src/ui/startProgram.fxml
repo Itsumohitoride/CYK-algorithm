@@ -15,6 +15,7 @@
                   <Button fx:id="addState" layoutX="304.0" layoutY="152.0" mnemonicParsing="false" onAction="#newState" text="Agregar estado" />
                   <TextField fx:id="state" layoutX="162.0" layoutY="112.0" prefHeight="25.0" prefWidth="88.0" />
                   <TextField fx:id="contentState" layoutX="269.0" layoutY="112.0" prefHeight="25.0" prefWidth="133.0" />
+                  <TextField fx:id="stringValue" layoutX="533.0" layoutY="112.0" prefHeight="25.0" prefWidth="133.0" />
                </children>
             </AnchorPane>
         </content>
