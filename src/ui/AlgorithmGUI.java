@@ -1,11 +1,13 @@
 package ui;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -29,6 +31,17 @@ public class AlgorithmGUI {
 	
     private double positionY = 0;
     
+    @FXML
+    private Button addState;
+    
+    @FXML
+    private TextField stringValue;
+	
+    private int cont = 1;
+    
+    private ArrayList<TextField> statesArray = new ArrayList<TextField>();
+    private ArrayList<TextField> contentArray = new ArrayList<TextField>();
+    
 	public AlgorithmGUI(AlgorithmCYK algorithmCYK) {
 		this.algorithmCYK = algorithmCYK;
 	}
@@ -49,6 +62,14 @@ public class AlgorithmGUI {
 		newContentState.setLayoutX(contentState.getLayoutX());
 		newContentState.setLayoutY(positionY + 40);
 		
+		newState.setId(String.valueOf(cont));
+		newContentState.setId(String.valueOf(cont));
+		
+		cont++;
+		
+		statesArray.add(newState);
+		contentArray.add(newContentState);
+		
 		positionY += 40;
 		
 		if (positionY >= insertValues.getHeight()) {
@@ -66,6 +87,14 @@ public class AlgorithmGUI {
 
 		mainPane.getChildren().clear();
 		mainPane.setTop(load);
+		
+		state.setId(String.valueOf(cont));
+		contentState.setId(String.valueOf(cont));
+		cont++;
+		
+		statesArray.add(state);
+		contentArray.add(contentState);
+		
 		positionY = state.getLayoutY();
 		
 	}
