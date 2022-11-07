@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
@@ -67,15 +68,53 @@ public class AlgorithmCYK {
 		
 		String[] symbol = string.split("");
 		
-		for (int i = 0; i < cykMatrix.length; i++) {
+		for (int i = 0; i < sizeString; i++) {
 			cykMatrix[i][0] = searchSymbol(symbol[i]);
-			System.out.println("Matriz posición: "+i+" guardó: "+symbol[i]);
 		}
 	}
 
 	public void stepTwo() {
+		
+		String states1 = "";
+		String states2 = "";
 
+		for (int j = 1; j <= sizeString; j++) {
+			
+			int k = 1;
+
+			for (int i = 0; i < sizeString - j + 1 ; i++) {
+				
+				states1 = cykMatrix[i][k];
+				states2 = cykMatrix[i+k][j-k];
+				
+				cykMatrix[i][j] = combinations(states1, states2);
+				
+				k++;
+			}
+		}
 	}
-
-
+	
+	public String combinations(String states1, String states2) {
+		String[] first = states1.split("");
+		String[] second = states2.split("");
+		
+		ArrayList<String> combinations = new ArrayList<>();
+		
+		for (int i = 0; i < first.length; i++) {
+			
+			for (int j = 0; j < second.length; j++) {
+				combinations.add(first[i]+second[j]);
+			}
+		}
+		String symbol = "";
+		
+		for (int i = 0; i < combinations.size(); i++) {
+			symbol += searchSymbol(combinations.get(i));
+		}
+		
+		System.out.println("simbolos "+symbol);
+		
+		return symbol;
+	}
+	
 }
