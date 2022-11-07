@@ -50,14 +50,15 @@ public class AlgorithmCYK {
 		
 		Enumeration<Hashtable<String, String>> productions = states.elements();
 		Enumeration<String> keys = states.keys();
-		String state = "{}"; 
+		String state = ""; 
 		String verify;
 		while (productions.hasMoreElements()) {
 			
 			verify = productions.nextElement().get(symbol);
+			String current = (String) keys.nextElement();
 			
 			if(verify != null && verify.equals(symbol)) {
-				state += (String) keys.nextElement();
+				state += current;
 			}
 		}
 		
@@ -78,18 +79,30 @@ public class AlgorithmCYK {
 		String states1 = "";
 		String states2 = "";
 
-		for (int j = 1; j <= sizeString; j++) {
+		for (int j = 1; j < sizeString; j++) {
 			
-			int k = 1;
-
-			for (int i = 0; i < sizeString - j + 1 ; i++) {
+			for (int i = 0; i <= sizeString - (j+2) + 1; i++) {
 				
-				states1 = cykMatrix[i][k];
-				states2 = cykMatrix[i+k][j-k];
+				String combination = "";
 				
-				cykMatrix[i][j] = combinations(states1, states2);
+				boolean verify = true;
 				
-				k++;
+				for (int k = 1; k < (j+2) - 1; k++) {
+					verify = false;
+					states1 = cykMatrix[i][k-1];
+					states2 = cykMatrix[i+k][j-k];
+					combination += combinations(states1, states2);
+				}
+				
+				if(!verify) {
+					cykMatrix[i][j] = combination;
+				}
+			}
+		}
+		
+		for (int i = 0; i < cykMatrix.length; i++) {
+			for (int j = 0; j < cykMatrix.length; j++) {
+				System.out.println("{"+cykMatrix[j][i]+"}");
 			}
 		}
 	}
@@ -112,9 +125,7 @@ public class AlgorithmCYK {
 			symbol += searchSymbol(combinations.get(i));
 		}
 		
-		System.out.println("simbolos "+symbol);
-		
 		return symbol;
 	}
-	
+	//Verificación de que si la S está conetenida en el último lugar, lo genera ;)
 }
