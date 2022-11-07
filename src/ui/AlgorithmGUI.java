@@ -27,6 +27,8 @@ public class AlgorithmGUI {
     @FXML
     private TextField state;
 	
+    double num = 0;
+    
 	public AlgorithmGUI(AlgorithmCYK algorithmCYK) {
 		this.algorithmCYK = algorithmCYK;
 	}
@@ -37,7 +39,8 @@ public class AlgorithmGUI {
 		newState.setPrefHeight(state.getPrefHeight());
 		newState.setPrefWidth(state.getPrefWidth());
 		newState.setLayoutX(state.getLayoutX());
-		newState.setLayoutY(state.getLayoutY() + 20);
+		newState.setLayoutY(num + 40);
+		num = newState.getLayoutY();
 		insertValues.getChildren().add(newState);
     }
 
@@ -49,6 +52,7 @@ public class AlgorithmGUI {
 
 		mainPane.getChildren().clear();
 		mainPane.setTop(load);
+		num = (int) state.getLayoutY();
 	}
 
 }
