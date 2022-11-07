@@ -3,6 +3,8 @@ package ui;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -101,6 +103,18 @@ public class AlgorithmGUI {
 		contentArray.add(contentState);
 		
 		positionY = state.getLayoutY();
+		
+	}
+	
+	@FXML	
+	public void addParameters(ActionEvent event) throws IOException{
+		
+		algorithmCYK.addString(null);
+		algorithmCYK.addStates(null, algorithmCYK.splitProductions(null));
+	}
+	
+	public void calculateCYK() throws IOException{
+		
 	}
 
 }
