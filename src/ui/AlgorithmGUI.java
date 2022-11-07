@@ -113,7 +113,7 @@ public class AlgorithmGUI {
 	}
 	
 	public void calculateCYK() throws IOException{
-		algorithmCYK.calculateCYK();
+		System.out.println(algorithmCYK.calculateCYK());
 	}
 
 }

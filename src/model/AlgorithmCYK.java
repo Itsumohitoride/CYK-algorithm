@@ -43,7 +43,7 @@ public class AlgorithmCYK {
 	public boolean calculateCYK() {
 		stepOne();
 		stepTwo();
-		return false;
+		return (cykMatrix[0][sizeString-1]).contains("S");
 	}
 	
 	public String searchSymbol(String symbol) {
