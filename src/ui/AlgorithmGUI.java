@@ -108,8 +108,6 @@ public class AlgorithmGUI {
 
 	public void loadBanner() throws IOException {
 		
-		this.algorithmCYK = new AlgorithmCYK();
-		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("startProgram.fxml"));
 
 		loader.setController(this);
@@ -134,6 +132,8 @@ public class AlgorithmGUI {
 	
 	@FXML	
 	public void addParameters(ActionEvent event) throws IOException{
+		
+		this.algorithmCYK = new AlgorithmCYK();
 		
 		algorithmCYK.addString(stringValue.getText());
 		
