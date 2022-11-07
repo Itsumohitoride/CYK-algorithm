@@ -1,11 +1,13 @@
 package ui;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -26,8 +28,16 @@ public class AlgorithmGUI {
 
     @FXML
     private TextField state;
+    
+    @FXML
+    private Button addState;
 	
     private double positionY = 0;
+    
+    private int cont = 1;
+    
+    private ArrayList<TextField> statesArray = new ArrayList<TextField>();
+    private ArrayList<TextField> contentArray = new ArrayList<TextField>();
     
 	public AlgorithmGUI(AlgorithmCYK algorithmCYK) {
 		this.algorithmCYK = algorithmCYK;
@@ -49,13 +59,27 @@ public class AlgorithmGUI {
 		newContentState.setLayoutX(contentState.getLayoutX());
 		newContentState.setLayoutY(positionY + 40);
 		
+		newState.setId(String.valueOf(cont));
+		newContentState.setId(String.valueOf(cont));
+		
+		cont++;
+		
+		statesArray.add(newState);
+		contentArray.add(newContentState);
+		
+		System.out.println(newState.getId());
+		System.out.println(newContentState.getId());
+		
 		positionY += 40;
 		
-		if (positionY >= insertValues.getHeight()) {
-			insertValues.setPrefHeight(positionY + 40);
-		}
+		addState.setLayoutY(addState.getLayoutY() + 40);
 		
+		if (addState.getLayoutY() >= insertValues.getHeight()) {
+			insertValues.setPrefHeight(positionY + 80);
+		}
+				
 		insertValues.getChildren().add(newState);
+		insertValues.getChildren().add(newContentState);
     }
 
 	public void loadBanner() throws IOException {
@@ -66,6 +90,16 @@ public class AlgorithmGUI {
 
 		mainPane.getChildren().clear();
 		mainPane.setTop(load);
+		
+		state.setId(String.valueOf(cont));
+		contentState.setId(String.valueOf(cont));
+		cont++;
+		
+		statesArray.add(state);
+		contentArray.add(contentState);
+		System.out.println(state.getId());
+		System.out.println(contentState.getId());
+		
 		positionY = state.getLayoutY();
 	}
 
