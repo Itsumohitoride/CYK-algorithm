@@ -36,7 +36,7 @@ public class AlgorithmGUI {
     
     @FXML
     private TextField stringValue;
-	
+
     private int cont = 1;
     
     private ArrayList<TextField> statesArray = new ArrayList<TextField>();
@@ -72,10 +72,8 @@ public class AlgorithmGUI {
 
         positionY += 40;
 
-        addState.setLayoutY(addState.getLayoutY() + 40);
-
-        if (addState.getLayoutY() >= insertValues.getHeight()) {
-            insertValues.setPrefHeight(positionY + 80);
+        if (newState.getLayoutY() >= insertValues.getHeight()) {
+            insertValues.setPrefHeight(positionY + 40);
         }
 
         insertValues.getChildren().add(newState);
