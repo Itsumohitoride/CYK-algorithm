@@ -10,9 +10,14 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import model.AlgorithmCYK;
 
 public class AlgorithmGUI {
@@ -38,6 +43,12 @@ public class AlgorithmGUI {
     
     @FXML
     private TextField stringValue;
+    
+    @FXML
+    private Label arrow;
+    
+    @FXML
+    private ImageView background;
 
     private int cont = 1;
     
@@ -53,7 +64,14 @@ public class AlgorithmGUI {
 
         TextField newState = new TextField();
         TextField newContentState = new TextField();
-
+        Label newArrow = new Label();
+        
+        Font font = Font.font("System", FontWeight.EXTRA_BOLD, 25);
+        
+        newArrow.setStyle(arrow.getStyle());
+        newArrow.setText(arrow.getText());
+        newArrow.setFont(font);
+        
         newState.setPrefHeight(state.getPrefHeight());
         newState.setPrefWidth(state.getPrefWidth());
         newState.setLayoutX(state.getLayoutX());
@@ -63,7 +81,12 @@ public class AlgorithmGUI {
         newContentState.setPrefWidth(contentState.getPrefWidth());
         newContentState.setLayoutX(contentState.getLayoutX());
         newContentState.setLayoutY(positionY + 40);
-
+        
+        newArrow.setPrefHeight(arrow.getPrefHeight());
+        newArrow.setPrefWidth(arrow.getPrefWidth());
+        newArrow.setLayoutX(arrow.getLayoutX());
+        newArrow.setLayoutY(positionY + 30);
+        
         newState.setId(String.valueOf(cont));
         newContentState.setId(String.valueOf(cont));
 
@@ -80,6 +103,7 @@ public class AlgorithmGUI {
 
         insertValues.getChildren().add(newState);
         insertValues.getChildren().add(newContentState);
+        insertValues.getChildren().add(newArrow);
     }
 
 	public void loadBanner() throws IOException {
@@ -93,6 +117,9 @@ public class AlgorithmGUI {
 
 		mainPane.getChildren().clear();
 		mainPane.setTop(load);
+		
+		Image back = new Image("/image/background.png");
+		background.setImage(back);
 		
 		state.setId(String.valueOf(cont));
 		contentState.setId(String.valueOf(cont));
@@ -134,7 +161,6 @@ public class AlgorithmGUI {
 			alert.setContentText("La cadena "+stringValue.getText()+" NO pertenece al lenguaje de la gramática");
 			alert.showAndWait();
 		}
-		
 	}
 
 }

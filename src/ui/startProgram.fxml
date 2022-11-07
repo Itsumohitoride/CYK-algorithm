@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="854.0" style="-fx-background-color: #A9F5CA;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <SplitPane fx:id="splitPane" orientation="VERTICAL" prefHeight="501.0" prefWidth="855.0">
          <items>
@@ -25,19 +31,70 @@
                <children>
                   <ScrollPane hbarPolicy="NEVER" prefHeight="501.0" prefWidth="854.0">
                     <content>
-                      <AnchorPane fx:id="insertValues" minHeight="0.0" minWidth="0.0" prefHeight="445.0" prefWidth="855.0">
+                      <AnchorPane fx:id="insertValues" minHeight="0.0" minWidth="0.0" prefHeight="452.0" prefWidth="855.0">
                            <children>
-                              <TextField fx:id="state" layoutX="162.0" layoutY="112.0" prefHeight="25.0" prefWidth="88.0" />
-                              <TextField fx:id="contentState" layoutX="269.0" layoutY="112.0" prefHeight="25.0" prefWidth="133.0" />
-                              <TextField fx:id="stringValue" layoutX="533.0" layoutY="112.0" prefHeight="25.0" prefWidth="133.0" />
+                              <ImageView fx:id="background" fitHeight="492.0" fitWidth="864.0" layoutX="-9.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true" />
+                              <TextField fx:id="state" layoutX="198.0" layoutY="177.0" prefHeight="25.0" prefWidth="88.0" promptText="Ejemplo: S" />
+                              <TextField fx:id="contentState" layoutX="343.0" layoutY="177.0" prefHeight="25.0" prefWidth="133.0" promptText="Ejemplo: AB/a" />
+                              <TextField fx:id="stringValue" layoutX="575.0" layoutY="177.0" prefHeight="25.0" prefWidth="133.0" promptText="Ejemplo: bbab" />
+                              <Label fx:id="arrow" layoutX="291.0" layoutY="166.0" prefHeight="41.0" prefWidth="50.0" text="---&gt;">
+                                 <font>
+                                    <Font name="System Bold" size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="301.0" layoutY="30.0" prefHeight="46.0" prefWidth="252.0" text="Algoritmo CYK" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Bookshelf Symbol 7" size="31.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="84.0" prefHeight="46.0" prefWidth="505.0" text="Ingrese los siguientes datos:" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Bookshelf Symbol 7" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="188.0" layoutY="130.0" prefHeight="46.0" prefWidth="98.0" text="Estados:" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Bookshelf Symbol 7" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="359.0" layoutY="130.0" prefHeight="46.0" prefWidth="98.0" text="Producciones:" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Bookshelf Symbol 7" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="576.0" layoutY="130.0" prefHeight="46.0" prefWidth="130.0" text="Cadena a probar:" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Bookshelf Symbol 7" size="14.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                     </content>
                   </ScrollPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" GridPane.rowIndex="1">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="60.0" prefWidth="853.0" GridPane.rowIndex="1">
                      <children>
-                        <Button layoutX="764.0" layoutY="11.0" mnemonicParsing="false" onAction="#addParameters" text="Continuar" />
-                        <Button fx:id="addState" layoutX="647.0" layoutY="11.0" mnemonicParsing="false" onAction="#newState" text="Agregar estado" />
+                        <Button ellipsisString="" layoutX="726.0" layoutY="8.0" mnemonicParsing="false" onAction="#addParameters" style="-fx-background-color: #8EE3F7;" text="Realizar algoritmo" textOverrun="CLIP">
+                           <effect>
+                              <DropShadow radius="6.335" spread="0.45" width="6.34">
+                                 <color>
+                                    <Color opacity="0.17938931286334991" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Button fx:id="addState" layoutX="603.0" layoutY="8.0" mnemonicParsing="false" onAction="#newState" style="-fx-background-color: #8EE3F7;" text="Agregar estado">
+                           <effect>
+                              <DropShadow radius="6.335" spread="0.45" width="6.34">
+                                 <color>
+                                    <Color opacity="0.17938931286334991" />
+                                 </color>
+                              </DropShadow>
+                           </effect>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor></Button>
                      </children>
                   </AnchorPane>
                </children>
