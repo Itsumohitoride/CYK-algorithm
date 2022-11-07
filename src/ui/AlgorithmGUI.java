@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -81,6 +83,9 @@ public class AlgorithmGUI {
     }
 
 	public void loadBanner() throws IOException {
+		
+		this.algorithmCYK = new AlgorithmCYK();
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("startProgram.fxml"));
 
 		loader.setController(this);
@@ -113,7 +118,23 @@ public class AlgorithmGUI {
 	}
 	
 	public void calculateCYK() throws IOException{
-		System.out.println(algorithmCYK.calculateCYK());
+		boolean verify = algorithmCYK.calculateCYK();
+		
+		if(verify) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Algoritmo CYK");
+			alert.setHeaderText("Excelente!");
+			alert.setContentText("La cadena "+stringValue.getText()+" pertenece al lenguaje de la gramática");
+			alert.show();
+			
+		} else {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Algoritmo CYK");
+			alert.setHeaderText("Ups!");
+			alert.setContentText("La cadena "+stringValue.getText()+" NO pertenece al lenguaje de la gramática");
+			alert.showAndWait();
+		}
+		
 	}
 
 }

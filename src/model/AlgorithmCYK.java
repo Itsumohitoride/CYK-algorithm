@@ -99,12 +99,6 @@ public class AlgorithmCYK {
 				}
 			}
 		}
-		
-		for (int i = 0; i < cykMatrix.length; i++) {
-			for (int j = 0; j < cykMatrix.length; j++) {
-				System.out.println("{"+cykMatrix[j][i]+"}");
-			}
-		}
 	}
 	
 	public String combinations(String states1, String states2) {
@@ -127,5 +121,4 @@ public class AlgorithmCYK {
 		
 		return symbol;
 	}
-	//Verificación de que si la S está conetenida en el último lugar, lo genera ;)
 }
