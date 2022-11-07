@@ -102,8 +102,11 @@ public class AlgorithmGUI {
 	@FXML	
 	public void addParameters(ActionEvent event) throws IOException{
 		
-		algorithmCYK.addString(null);
-		algorithmCYK.addStates(null, algorithmCYK.splitProductions(null));
+		algorithmCYK.addString(stringValue.getText());
+		
+		for (int i = 0; i < statesArray.size(); i++) {
+			algorithmCYK.addStates(statesArray.get(i).getText(), algorithmCYK.splitProductions(contentArray.get(i).getText()));
+		}
 	}
 	
 	public void calculateCYK() throws IOException{

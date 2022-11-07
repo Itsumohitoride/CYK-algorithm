@@ -17,7 +17,7 @@ public class AlgorithmCYK {
 	}
 	
 	public ArrayList<String> splitProductions(String text){
-		String [] splitProductions = text.split("|");
+		String [] splitProductions = text.split("/");
 		
 		ArrayList<String> productionsOfState = new ArrayList<>();
 		
@@ -35,7 +35,6 @@ public class AlgorithmCYK {
 	public void addString(String string) {
 		this.string = string;
 		sizeString = this.string.length();
-		System.out.println("tamaño del string "+sizeString);
 	}
 	
 	public boolean calculateCYK() {
